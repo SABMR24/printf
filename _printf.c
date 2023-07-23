@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
-			
+
 		if (format[len - 1] == '%' && format[len] == '\0')
 		return (-1);
 
