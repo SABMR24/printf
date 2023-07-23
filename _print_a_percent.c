@@ -15,5 +15,7 @@ int _print_a_percent(va_list the_args, int count)
 	*/
 
 	_putchar('%');
-	return (count + 1);
+	count++;
+	return (count);
 }
+

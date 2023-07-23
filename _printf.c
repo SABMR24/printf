@@ -9,26 +9,20 @@
  * Return: the number of characters printed
  */
 
-
-
 int _printf(const char *format, ...)
 {
 	va_list the_args;
-	int count = 0;
-	int i = 0, j;
+	int count = 0, i = 0, j;
 
 	spec__func specFuncs[] = {
 		{"c", _print_a_char},
 		{"s", _print_a_string},
 		{"%", _print_a_percent},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 	va_start(the_args, format);
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if ((format[i] == '%' && format[1] == ' ')
-		|| (format[i] == '%' && format[i + 1] == '\0'))
+		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
 
 		if (format[i] == '%')
@@ -36,9 +30,18 @@ int _printf(const char *format, ...)
 			i++;
 			for (j = 0; specFuncs[j].spec != NULL; j++)
 			{
+				while (format[i] == ' ')
+					i++;
 				if (format[i] == *specFuncs[j].spec)
 				{
 					count = specFuncs[j].func(the_args, count);
+					break;
+				}
+				else if (format[i] != *specFuncs[j].spec && specFuncs[j + 1].spec == NULL)
+				{
+					_print_a_percent(the_args, count);
+					_putchar(format[i]);
+					count += 2;
 					break;
 				}
 			}
@@ -49,8 +52,6 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
-
 	va_end(the_args);
 	return (count);
 }
-

@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stddef.h>
+#include <stdio.h>
 
 /**
  * _print_a_string - prints a string
@@ -12,11 +14,24 @@ int _print_a_string(va_list the_args, int count)
 {
 	int i;
 	char *str = va_arg(the_args, char *);
+	char *nullstr = "(null)";
 
-	for (i = 0; str[i] != '\0' ; i++)
+	if (str == NULL)
 	{
-		_putchar(str[i]);
-		count += 1;
+		for (i = 0; nullstr[i] != '\0'; i++)
+		{
+			_putchar(nullstr[i]);
+			count++;
+		}
+	} else
+	{
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			_putchar(str[i]);
+			count++;
+		}
 	}
+
 	return (count);
+
 }
