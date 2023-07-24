@@ -1,24 +1,34 @@
 #include "main.h"
 #include <stdint.h>
 
+/**
+ * _print_an_integer - prints an integer
+ * @the_args: the va_list that holds the integer to be printed
+ * @count: the counter of already printed characters.
+ * Return: count.
+ */
+
 int _print_an_integer(va_list the_args, int count)
 {
 	int number = va_arg(the_args, int);
 	int i, len;
 	int digits[20];
 
+	if (number == -2147483648)
+	{
+		_puts("-2147483648");
+		return (11); }
+
 	if (number == 0)
 	{
 		_putchar('0');
-		count++;
-	}
+		count++; }
 
 	if (number < 0)
 	{
 		_putchar('-');
 		count++;
-		number = -number;
-	}
+		number = -number; }
 
 	if (number > 0)
 	{
