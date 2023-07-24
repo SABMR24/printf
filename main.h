@@ -13,6 +13,7 @@ int _print_a_percent(va_list the_args, int count);
  * @spec: the specifier
  * @func: the function associated
  */
+
 typedef struct specs
 {
 	char *spec;
