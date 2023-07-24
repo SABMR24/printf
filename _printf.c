@@ -15,11 +15,11 @@ int _printf(const char *format, ...)
 	va_list the_args;
 	int count = 0, i = 0, j, len;
 	spec__func specFuncs[] = {
+		{"i", _print_an_integer},
+		{"d", _print_an_integer},
 		{"c", _print_a_char},
 		{"s", _print_a_string},
 		{"%", _print_a_percent},
-		{"i", _print_an_integer},
-		{"d", _print_an_integer},
 		{NULL, NULL}};
 	va_start(the_args, format);
 
