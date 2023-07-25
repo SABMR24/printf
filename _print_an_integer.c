@@ -37,7 +37,7 @@ int _print_an_integer(va_list args, int count)
 	while (len > 0)
 	{
 		int x = 1, i = 1;
-		
+
 		while (i < len)
 		{
 			x *= 10;
@@ -50,5 +50,3 @@ int _print_an_integer(va_list args, int count)
 	}
 	return (count);
 }
-
-```
