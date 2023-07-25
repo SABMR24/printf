@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 		{"c", _print_a_char},
 		{"s", _print_a_string},
 		{"%", _print_a_percent},
+		{"r", _print_esrever},
 		{NULL, NULL}};
 	va_start(the_args, format);
 
