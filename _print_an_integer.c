@@ -5,7 +5,7 @@
  * _print_an_integer - prints an integer
  * @the_args: the va_list that holds the integer to be printed
  * @count: the counter of already printed characters.
- * Return: count.
+ * Return: it adds the number of printed characters to count.
  */
 
 int _print_an_integer(va_list the_args, int count)
@@ -14,10 +14,17 @@ int _print_an_integer(va_list the_args, int count)
 	int i, len;
 	int digits[20];
 
+    if (!number)
+    {
+        _puts("0");
+        return (1);
+    }
+
 	if (number == -2147483648)
 	{
 		_puts("-2147483648");
-		return (11); }
+		return (11);
+    }
 
 	if (number == 0)
 	{
