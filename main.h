@@ -9,6 +9,7 @@ int _print_a_string(va_list the_args, int count);
 int _print_a_percent(va_list the_args, int count);
 int _print_an_integer(va_list the_args, int count);
 int _print_esrever(va_list the_args, int count);
+int _print_ROT13(va_list args, int count);
 
 /**
  * struct specs - struct for specifiers

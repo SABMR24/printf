@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
+
 int _strlen(char *s);
 /**
  * _printf - user defined printf function
@@ -15,12 +16,13 @@ int _printf(const char *format, ...)
 	va_list the_args;
 	int count = 0, i = 0, j, len;
 	spec__func specFuncs[] = {
-		{"i", _print_an_integer},
-		{"d", _print_an_integer},
 		{"c", _print_a_char},
 		{"s", _print_a_string},
 		{"%", _print_a_percent},
+		{"i", _print_an_integer},
+		{"d", _print_an_integer},
 		{"r", _print_esrever},
+		{"R", _print_ROT13},
 		{NULL, NULL}};
 	va_start(the_args, format);
 
@@ -36,21 +38,20 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
-
 		if (format[len - 1] == '%' && format[len] == '\0')
-		return (-1);
+			return (-1);
 
 		if (format[i] == '%')
 		{
 			i++;
+			while (format[i] == ' ')
+			{
+				i++;
+				if (format[i] == '\0')
+					return (-1);
+			}
 			for (j = 0; specFuncs[j].spec != NULL; j++)
 			{
-				while (format[i] == ' ')
-				{
-					i++;
-					if (format[i] == '\0')
-						return (-1);
-				}
 				if (format[i] == *specFuncs[j].spec)
 				{
 					count = specFuncs[j].func(the_args, count);
@@ -76,7 +77,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- * _strlen - returns the length of a string.
+ * _strlen - returns the lengtth of a string.
  * @s: string to get the length of. "test\0"
  * Return: integer the length of the string
  */
